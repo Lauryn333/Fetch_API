@@ -3,4 +3,9 @@
 }
 body {
   margin: 0;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
