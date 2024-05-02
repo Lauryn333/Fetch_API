@@ -1,15 +1,15 @@
 import "../scss/userCard.scss";
-function UserCard({ profil }) {
+function UserCard({ firstName, lastName, email, picture, getProfil }) {
   return (
     <div className="div-container">
       <div className="user-informations">
-        <img src={profil.picture} alt="portrait individuel" />
+        <img src={picture} alt="portrait individuel" />
         <h3>
-          {profil.firstName} {profil.lastName}
+          {firstName} {lastName}
         </h3>
-        <p>{profil.email}</p>
+        <p>{email}</p>
       </div>
-      <button>Click here to change the user</button>
+      <button onClick={() => getProfil()}>Click here to change the user</button>
     </div>
   );
 }

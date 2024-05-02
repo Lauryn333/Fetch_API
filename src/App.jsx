@@ -13,19 +13,30 @@ function App() {
 
   const [profil, setProfil] = useState(user);
 
-  const getProfil =
-    (() => {
-      axios
-        .get("https://randomuser.me/api/?inc=name, email, picture")
-        .then((response) => {
-          setProfil(response.data.results[0]);
-        });
-    },
-    []);
+  const getProfil = () => {
+    axios
+      .get("https://randomuser.me/api/?inc=name, email, picture")
+      .then((response) => {
+        const userData = response.data.results[0];
+        const newProfil = {
+          firstName: userData.name.first,
+          lastName: userData.name.last,
+          email: userData.email,
+          picture: userData.picture.large,
+        };
+        setProfil(newProfil);
+      });
+  };
 
   return (
     <>
-      <UserCard profil={profil} />
+      <UserCard
+        firstName={profil.firstName}
+        lastName={profil.lastName}
+        email={profil.email}
+        picture={profil.picture}
+        getProfil={getProfil}
+      />
     </>
   );
 }
